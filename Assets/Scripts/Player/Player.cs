@@ -16,6 +16,8 @@ namespace Assets.Scripts.Player
         private Vector2 _startTouchPosition;
         private Vector2 _endTouchPosition;
 
+        private float _xDirection = 0;
+
         private Vector3[] _positions =
         {
             Vector3.left,
@@ -34,13 +36,27 @@ namespace Assets.Scripts.Player
         private void OnEnable()
         {
             _input.Enable();
+            _input.Gameplay.KeyboardMovementSides.performed += OnSide;
             _input.Gameplay.Swipe.started += OnTouchStarted;
             _input.Gameplay.Swipe.canceled += OnTouchEnded;
         }
 
+        /*private void Update()
+        {
+            if(_input.Gameplay.KeyboardMovement.IsPressed())
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+*/
         private void OnDisable()
         {
             _input.Disable();
+            _input.Gameplay.KeyboardMovementSides.performed -= OnSide;
             _input.Gameplay.Swipe.started -= OnTouchStarted;
             _input.Gameplay.Swipe.canceled -= OnTouchEnded;
         }
@@ -59,6 +75,21 @@ namespace Assets.Scripts.Player
             _endTouchPosition = touch!.position.ReadValue();
 
             DetectSwipe();
+        }
+
+        private void OnSide(InputAction.CallbackContext context)
+        {
+            if (!_isSwipe) return;
+
+            _xDirection = context.ReadValue<float>();
+
+            int targetLine = (_xDirection > 0) ? (_currentLine + 1) : (_currentLine - 1);
+
+            if (targetLine >= -1 && targetLine <= 1)
+            {
+                _currentLine = targetLine;
+                StartCoroutine(MoveTo(targetLine));
+            }
         }
 
         private void DetectSwipe()

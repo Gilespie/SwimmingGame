@@ -35,6 +35,33 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""KeyboardMovementForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f128fa6-3907-4d70-89f5-296f227b2cf9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AccelerationForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""052e7e1e-ad15-4188-a5db-8215d4ffe184"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KeyboardMovementSides"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2c4b18d-94c0-4567-a2e0-47f9a00b9ed1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +75,61 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Swipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df060bd0-df6f-40a8-af38-7d455c787893"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AccelerationForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8b07276-e2ff-471c-92d4-9ac7a9a14a6d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardMovementForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""0156e60a-912e-4911-a755-00ff8ed44365"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardMovementSides"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""12952e77-cd12-49b3-93ac-23a693222a43"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardMovementSides"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""0889479c-2b91-441a-a1c7-9d65400e6e8a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardMovementSides"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -57,6 +139,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Swipe = m_Gameplay.FindAction("Swipe", throwIfNotFound: true);
+        m_Gameplay_KeyboardMovementForward = m_Gameplay.FindAction("KeyboardMovementForward", throwIfNotFound: true);
+        m_Gameplay_AccelerationForward = m_Gameplay.FindAction("AccelerationForward", throwIfNotFound: true);
+        m_Gameplay_KeyboardMovementSides = m_Gameplay.FindAction("KeyboardMovementSides", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +204,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Swipe;
+    private readonly InputAction m_Gameplay_KeyboardMovementForward;
+    private readonly InputAction m_Gameplay_AccelerationForward;
+    private readonly InputAction m_Gameplay_KeyboardMovementSides;
     public struct GameplayActions
     {
         private @PlayerInput m_Wrapper;
         public GameplayActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Swipe => m_Wrapper.m_Gameplay_Swipe;
+        public InputAction @KeyboardMovementForward => m_Wrapper.m_Gameplay_KeyboardMovementForward;
+        public InputAction @AccelerationForward => m_Wrapper.m_Gameplay_AccelerationForward;
+        public InputAction @KeyboardMovementSides => m_Wrapper.m_Gameplay_KeyboardMovementSides;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +227,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Swipe.started += instance.OnSwipe;
             @Swipe.performed += instance.OnSwipe;
             @Swipe.canceled += instance.OnSwipe;
+            @KeyboardMovementForward.started += instance.OnKeyboardMovementForward;
+            @KeyboardMovementForward.performed += instance.OnKeyboardMovementForward;
+            @KeyboardMovementForward.canceled += instance.OnKeyboardMovementForward;
+            @AccelerationForward.started += instance.OnAccelerationForward;
+            @AccelerationForward.performed += instance.OnAccelerationForward;
+            @AccelerationForward.canceled += instance.OnAccelerationForward;
+            @KeyboardMovementSides.started += instance.OnKeyboardMovementSides;
+            @KeyboardMovementSides.performed += instance.OnKeyboardMovementSides;
+            @KeyboardMovementSides.canceled += instance.OnKeyboardMovementSides;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -143,6 +243,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Swipe.started -= instance.OnSwipe;
             @Swipe.performed -= instance.OnSwipe;
             @Swipe.canceled -= instance.OnSwipe;
+            @KeyboardMovementForward.started -= instance.OnKeyboardMovementForward;
+            @KeyboardMovementForward.performed -= instance.OnKeyboardMovementForward;
+            @KeyboardMovementForward.canceled -= instance.OnKeyboardMovementForward;
+            @AccelerationForward.started -= instance.OnAccelerationForward;
+            @AccelerationForward.performed -= instance.OnAccelerationForward;
+            @AccelerationForward.canceled -= instance.OnAccelerationForward;
+            @KeyboardMovementSides.started -= instance.OnKeyboardMovementSides;
+            @KeyboardMovementSides.performed -= instance.OnKeyboardMovementSides;
+            @KeyboardMovementSides.canceled -= instance.OnKeyboardMovementSides;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -163,5 +272,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnSwipe(InputAction.CallbackContext context);
+        void OnKeyboardMovementForward(InputAction.CallbackContext context);
+        void OnAccelerationForward(InputAction.CallbackContext context);
+        void OnKeyboardMovementSides(InputAction.CallbackContext context);
     }
 }
