@@ -1,12 +1,14 @@
 using Assets.Scripts.Player;
 using System;
 using System.Collections;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class WaterBoard : MonoBehaviour
 {
+    [Header("TestUI")]
+    [SerializeField] private UITest _ui;
 
     [Header("Speed")]
     [SerializeField] private float _minSpeed = 1f;
@@ -47,6 +49,8 @@ public class WaterBoard : MonoBehaviour
 
     private void Update()
     {
+        _ui.ShowText(_accelerationLerpRate, _decelerationLerpRate, _maxSpeed, _delaySeconds, _currentSpeed);
+
         if(_currentSpeed != 0 && _currentCoroutine == null)
         {
             MoveBack();
