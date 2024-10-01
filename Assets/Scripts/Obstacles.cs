@@ -15,6 +15,8 @@ public class Obstacles : MonoBehaviour
 
     private void Update()
     {
+        _speed = _board.CurrentSpeed;
+
         _direction = new Vector3(0,0,-1).normalized;
 
         transform.position += _direction * _speed * Time.deltaTime;
@@ -22,7 +24,6 @@ public class Obstacles : MonoBehaviour
         if (transform.position.z <= -_limitZ)
         {
             Destroy(gameObject);
-            //transform.position = new Vector3(0, 0, _limitZ);
         }
     }
 

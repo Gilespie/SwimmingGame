@@ -24,11 +24,13 @@ public class WaterBoard : MonoBehaviour
 
     private Coroutine _currentCoroutine = null;
     private float _currentSpeed = 0f;
+    public float CurrentSpeed => _currentSpeed;
+
     private Vector3 _direction = new();
 
     [Header("Z Limit")]
-    private float _minBorderLimitsZ = -7;
-    private float _maxBorderLimitsZ = 7;
+    [SerializeField] private float _minBorderLimitsZ = -7;
+    [SerializeField] private float _maxBorderLimitsZ = 7;
 
     private PlayerInput _playerInput;
 
