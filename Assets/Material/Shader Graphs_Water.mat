@@ -61,14 +61,17 @@ Material:
     m_Floats:
     - _Alpha: 0.41
     - _Offset: 0.38
-    - _OffsetNormal: 0.5
+    - _OffsetNormal: 1.53
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 0
     - _Strenght: 8
-    - _StrenghtNormal: 8
+    - _StrenghtNormal: 15
+    - _WaveSize: 15
+    - _WaveSpeed: 3
     m_Colors:
     - _MainColor: {r: 0.73018867, g: 1, b: 0.9955949, a: 1}
     - _MainST: {r: 4.63, g: -0.15, b: 0, a: 0}
+    - _NormalST: {r: 1, g: 1, b: 0, a: 0}
     - _Speed: {r: 0, g: -0.02, b: 0, a: 0}
   m_BuildTextureStacks: []

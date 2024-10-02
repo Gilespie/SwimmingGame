@@ -6,7 +6,7 @@ public class Obstacles : MonoBehaviour
     [SerializeField] private float _speed = 1.0f;
     private WaterBoard _board;
     private Vector3 _direction = new();
-    private float _limitZ = 7;
+    private float _limitZ = 8;
 
     private void Start()
     {
