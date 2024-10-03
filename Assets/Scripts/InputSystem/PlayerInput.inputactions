@@ -66,6 +66,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "d766708d-ce56-4515-9430-46b027cdc63c",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KeyboardMovementForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "1D Axis",
                     "id": "0156e60a-912e-4911-a755-00ff8ed44365",
                     "path": "1DAxis",
@@ -99,8 +110,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "One Modifier",
-                    "id": "c12cf4af-cc05-4300-bb9d-2f01774f542e",
+                    "name": "Touch",
+                    "id": "98de0c7b-3be6-410f-b761-38a8a797a93f",
                     "path": "OneModifier",
                     "interactions": "",
                     "processors": "",
@@ -111,7 +122,7 @@
                 },
                 {
                     "name": "modifier",
-                    "id": "b7593124-79b9-4be6-add2-3cf5d25b47c5",
+                    "id": "53b851b9-1c4c-4fe5-b73e-2dfda6950075",
                     "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
@@ -122,8 +133,41 @@
                 },
                 {
                     "name": "binding",
-                    "id": "6dfaead4-2802-43a9-bb2a-02fa1e6dae85",
+                    "id": "23dc86b7-5b2b-4e81-88ee-b564162bab05",
                     "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Mouse",
+                    "id": "e0655ab4-5e9f-4746-903a-e447beddc016",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "82537d35-4691-485b-8194-4c5e4d979028",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "5035ce2a-1ed7-486a-b877-cba46e483862",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

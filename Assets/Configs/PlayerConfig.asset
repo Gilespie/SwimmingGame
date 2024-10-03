@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eee2228782992a47982a6328c5ed909, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  <SwipeThreshold>k__BackingField: 250
+  <SwipeThreshold>k__BackingField: 100
   <LineDistance>k__BackingField: 2
   <DurationMoving>k__BackingField: 0.5
