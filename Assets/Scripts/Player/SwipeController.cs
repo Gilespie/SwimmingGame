@@ -50,8 +50,6 @@ namespace Assets.Scripts.Player
 
         private void OnTouchMoved(InputAction.CallbackContext context)
         {
-            if (!_isSwipe) return;
-
             _currentTouchPosition = context.ReadValue<Vector2>();
 
             DetectSwipe();
@@ -59,6 +57,8 @@ namespace Assets.Scripts.Player
 
         private void OnSide(InputAction.CallbackContext context)
         {
+            if (!_isSwipe) return; 
+
             _xDirection = context.ReadValue<float>();
 
             int targetLine = (_xDirection > 0) ? (_currentLine + 1) : (_currentLine - 1);
@@ -72,6 +72,8 @@ namespace Assets.Scripts.Player
 
         private void DetectSwipe()
         {
+            if (!_isSwipe) return;
+
             var direction = (_currentTouchPosition.x - _startTouchPosition.x);
 
             if (MathF.Abs(direction) >= _player.Config.SwipeThreshold)

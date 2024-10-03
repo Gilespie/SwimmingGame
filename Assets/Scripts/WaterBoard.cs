@@ -9,6 +9,7 @@ public class WaterBoard : MonoBehaviour
 {
     [Header("TestUI")]
     [SerializeField] private UITest _ui;
+    [SerializeField] private Player _player;
 
     [Header("Speed")]
     [SerializeField] private float _minSpeed = 1f;
@@ -108,10 +109,12 @@ public class WaterBoard : MonoBehaviour
 
     private IEnumerator StopMoveWater(float speed, float seconds)
     {
+        _player.Input.Disable(); 
         _currentSpeed = speed;
         yield return new WaitForSeconds(seconds);
         _currentSpeed = _minSpeed;
         _currentCoroutine = null;
+        _player.Input.Enable();
         
         yield return null;
     }

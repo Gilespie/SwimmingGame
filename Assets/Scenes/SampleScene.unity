@@ -3373,6 +3373,18 @@ Transform:
   - {fileID: 826791359}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1730955828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3913207786673233529, guid: f11b78d79a0ced3439e6fd860d8579f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230798912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c974924997eac640a3dfb49f80d9e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1825840647
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,6 +3988,11 @@ PrefabInstance:
       propertyPath: _ui
       value: 
       objectReference: {fileID: 1614415034}
+    - target: {fileID: 5947525545566627863, guid: 97fc5698f6af346498029acbb9812d50,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1730955828}
     - target: {fileID: 5947525545566627863, guid: 97fc5698f6af346498029acbb9812d50,
         type: 3}
       propertyPath: _maxBorderLimitsZ
