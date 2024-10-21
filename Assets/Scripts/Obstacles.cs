@@ -15,7 +15,7 @@ public class Obstacles : MonoBehaviour
 
     private void Update()
     {
-        _speed = _board.CurrentSpeed;
+        _speed = _board.CurrentSpeed/2;
 
         _direction = new Vector3(0,0,-1).normalized;
 

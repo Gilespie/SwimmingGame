@@ -57,15 +57,15 @@ public class WaterBoard : MonoBehaviour
         if(_currentSpeed != 0 && _currentCoroutine == null)
         {
             MoveBack();
-
-            if (_playerInput.Gameplay.KeyboardMovementForward.IsPressed() || _playerInput.Gameplay.AccelerationForward.IsPressed()) //"Tap"
-            {
-                _currentSpeed = Mathf.Lerp(_currentSpeed, _maxSpeed, Time.deltaTime * _accelerationLerpRate);
-            }
-            else
-            {
-                _currentSpeed = Mathf.Lerp(_currentSpeed, _minSpeed, Time.deltaTime * _decelerationLerpRate);
-            }
+            _currentSpeed = Mathf.Lerp(_currentSpeed, _maxSpeed, Time.deltaTime * _accelerationLerpRate);
+            /* if (_playerInput.Gameplay.KeyboardMovementForward.IsPressed() || _playerInput.Gameplay.AccelerationForward.IsPressed()) //"Tap"
+             {
+                 _currentSpeed = Mathf.Lerp(_currentSpeed, _maxSpeed, Time.deltaTime * _accelerationLerpRate);
+             }
+             else
+             {
+                 _currentSpeed = Mathf.Lerp(_currentSpeed, _minSpeed, Time.deltaTime * _decelerationLerpRate);
+             }*/
         }
     }
 
