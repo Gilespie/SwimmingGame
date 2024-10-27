@@ -25,7 +25,11 @@ public class SpawnerObject : MonoBehaviour
         {
             _randomXRange = Random.Range(-1, 2);
             _randomIndex = Random.Range(0, _obstacles.Length);
-            GameObject spawnedObj = Instantiate(_obstacles[_randomIndex], new Vector3(_randomXRange*_lineDistance, 0, transform.position.z), Quaternion.identity);
+
+            GameObject spawnedObj = Instantiate(_obstacles[_randomIndex], 
+                                    new Vector3(_randomXRange*_lineDistance, 0, transform.position.z),
+                                    Quaternion.identity);
+
             _timer = _delaySeconds;
         }
     }

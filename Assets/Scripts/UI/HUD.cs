@@ -15,25 +15,37 @@ public class HUD : MonoBehaviour
 
     public void ShowHUDMain()
     {
-        _hudPanel.SetActive(true);
-        _pausePanel.SetActive(false);
-        _settingsPanel.SetActive(false);
+        HideAllPaneles();
+        ShowPanel(_hudPanel);
         Time.timeScale = 1.0f;
     }
 
     public void ShowPause()
     {
-        _hudPanel.SetActive(false);
-        _pausePanel.SetActive(true);
-        _settingsPanel.SetActive(false);
+        HideAllPaneles();
+        ShowPanel(_pausePanel);
         Time.timeScale = 0.0f;
     }
 
     public void ShowSettings()
     {
+        HideAllPaneles();
+        ShowPanel(_settingsPanel);
+    }
+
+    public void ShowPanel(GameObject panel)
+    {
+        if(panel != null)
+        {
+            panel.SetActive(true);
+        }
+    }
+
+    public void HideAllPaneles()
+    {
         _hudPanel.SetActive(false);
         _pausePanel.SetActive(false);
-        _settingsPanel.SetActive(true);
+        _settingsPanel.SetActive(false);
     }
 
     public void RestartLevel()

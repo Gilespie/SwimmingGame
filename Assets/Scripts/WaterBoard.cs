@@ -10,6 +10,7 @@ public class WaterBoard : MonoBehaviour
     [Header("TestUI")]
     [SerializeField] private UITest _ui;
     [SerializeField] private Player _player;
+    [SerializeField] private PlayerAvatar _playerAvatar;
 
     [Header("Speed")]
     [SerializeField] private float _minSpeed = 1f;
@@ -58,6 +59,8 @@ public class WaterBoard : MonoBehaviour
         {
             MoveBack();
             _currentSpeed = Mathf.Lerp(_currentSpeed, _maxSpeed, Time.deltaTime * _accelerationLerpRate);
+            _playerAvatar.ChangeSpeed(_currentSpeed);
+
             /* if (_playerInput.Gameplay.KeyboardMovementForward.IsPressed() || _playerInput.Gameplay.AccelerationForward.IsPressed()) //"Tap"
              {
                  _currentSpeed = Mathf.Lerp(_currentSpeed, _maxSpeed, Time.deltaTime * _accelerationLerpRate);

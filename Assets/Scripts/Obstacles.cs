@@ -5,12 +5,14 @@ public class Obstacles : MonoBehaviour
 {
     [SerializeField] private float _speed = 1.0f;
     private WaterBoard _board;
+    private PlayerAvatar _playerAvatar;
     private Vector3 _direction = new();
     private float _limitZ = 8;
 
     private void Start()
     {
         _board = FindObjectOfType<WaterBoard>();
+        _playerAvatar = FindObjectOfType<PlayerAvatar>();
     }
 
     private void Update()
@@ -32,6 +34,7 @@ public class Obstacles : MonoBehaviour
         if(other.gameObject.TryGetComponent<Player>(out Player player))
         {
             _board.StartRoutine();
+            _playerAvatar.ActivateTrigger();
             Destroy(gameObject);    
         }
     }

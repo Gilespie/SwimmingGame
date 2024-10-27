@@ -8,7 +8,7 @@ public class Statistic : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _distanceText;
     private float _time = 0f;
     
-    void Update()
+    private void Update()
     {
         ShowTime();
         ShowDistance();
